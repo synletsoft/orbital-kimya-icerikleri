@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="9. ve 10. sınıf kimya etkinliklerini tek yerde keşfedin."
+    />
+    <title>Kimya Etkinlikleri | Synlet</title>
+    <link rel="stylesheet" href="styles.css?v=20260912" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="#top" aria-label="Kimya Etkinlikleri ana sayfa">
+          <img class="brand-logo" src="logo.png" alt="Orbital Yayınları" />
+        </a>
+
+      </header>
+
+      <main id="top">
+        <section class="hero" aria-labelledby="page-title">
+          <div class="hero-copy">
+            <p class="eyebrow"><span></span> Kimya etkinlik arşivi</p>
+            <h1 id="page-title">Dersi keşfet,<br /><em>etkinlikle öğren.</em></h1>
+            <p class="hero-text">
+              9. ve 10. sınıf kimya konularına ait etkileşimli içerikleri tek bir
+              yerde bul, seç ve hemen aç.
+            </p>
+          </div>
+          <div class="hero-orbit" aria-hidden="true">
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+            <div class="atom-core">O</div>
+            <span class="electron electron-one"></span>
+            <span class="electron electron-two"></span>
+            <span class="electron electron-three"></span>
+          </div>
+        </section>
+
+        <section class="toolbar" aria-label="Etkinlikleri filtrele">
+          <label class="search-box">
+            <span class="search-icon" aria-hidden="true">⌕</span>
+            <span class="sr-only">Etkinlik ara</span>
+            <input id="searchInput" type="search" placeholder="Etkinlik ara..." autocomplete="off" />
+            <kbd>/</kbd>
+          </label>
+          <div class="filter-group" role="group" aria-label="Sınıf seçimi">
+            <button class="filter-button is-active" type="button" data-filter="all">Tümü</button>
+            <button class="filter-button" type="button" data-filter="9">9. Sınıf</button>
+            <button class="filter-button" type="button" data-filter="10">10. Sınıf</button>
+          </div>
+          <p class="result-count" id="resultCount"></p>
+        </section>
+
+        <div id="sections" class="sections"></div>
+
+        <section id="emptyState" class="empty-state" hidden>
+          <span class="empty-icon" aria-hidden="true">⌁</span>
+          <h2>Etkinlik bulunamadı</h2>
+          <p>Arama ifadenizi veya sınıf filtresini değiştirerek tekrar deneyin.</p>
+          <button id="clearSearch" type="button">Filtreleri temizle</button>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <span>Synlet içerik arşivi</span>
+        <span>9. ve 10. sınıf kimya</span>
+      </footer>
+    </div>
+
+    <script src="app.js?v=20260912"></script>
+  </body>
+</html>
