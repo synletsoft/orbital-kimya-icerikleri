@@ -30,11 +30,9 @@ const sections = [
     items: [
       ["Kimyasal Değişim", "https://synletsoft.github.io/kimyasal-degisim/"],
       ["Kimyasal Tepkimelerin Oluşum Sürecini Modelleme", "https://synletsoft.github.io/kimyasal-tepkimelerin-olusum-surecini-modelleme/"],
-      ["Çökelme Tepkimeleri", "https://synletsoft.github.io/kimyasal-tepkime-turleri/"],
-      ["Mol Kavramı", "https://synletsoft.github.io/grup-isimleri-mol-sayisi/"],
-      ["Organik Moleküllerin Ayıraçları", "https://synletsoft.github.io/organik-molekullerin-ayiraclari/"],
-      ["Basit Miktar Geçişleri", "https://synletsoft.github.io/basit-miktar-gecisleri/"],
       ["Kimyasal Tepkime Türleri", "https://synletsoft.github.io/kimyasal-tepkime-turleri/", "Çökelme Tepkimeleri"],
+      ["Mol Kavramı", "https://synletsoft.github.io/grup-isimleri-mol-sayisi/"],
+      ["Basit Miktar Geçişleri", "https://synletsoft.github.io/basit-miktar-gecisleri/"],
       ["Gazların Özellikleri", "https://synletsoft.github.io/gazlarin-ozellikleri/"],
       ["Graham Difüzyon Efüzyon Yasası", "https://synletsoft.github.io/graham-difuzyon-efuzyon-yasasi/"],
       ["Koligatif Özellikler", "https://synletsoft.github.io/koligatif-ozellikler/"],
