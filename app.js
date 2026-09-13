@@ -3,6 +3,7 @@ const sections = [
     grade: "9",
     title: "9. Sınıf Kimya",
     folder: "9-sinif-kimya",
+    pdfFolder: "9-sinif-kitap",
     items: [
       ["Maddelerin Asidik ve Bazik Özelliklerinin Belirlenmesi", "https://synletsoft.github.io/maddelerde-asidik-bazik-ozellik-belirleme/"],
       ["Metallerin Asit ve Bazlarla Tepkimesi", "https://synletsoft.github.io/metallerin-asit-baz-tepkimesi/"],
@@ -27,6 +28,7 @@ const sections = [
     grade: "10",
     title: "10. Sınıf Kimya",
     folder: "10-sinif-kimya",
+    pdfFolder: "10-sinif-kitap",
     items: [
       ["Kimyasal Değişim", "https://synletsoft.github.io/kimyasal-degisim/"],
       ["Kimyasal Tepkimelerin Oluşum Sürecini Modelleme", "https://synletsoft.github.io/kimyasal-tepkimelerin-olusum-surecini-modelleme/"],
@@ -73,17 +75,25 @@ function imagePath(folder, title) {
   return `./${folder}/${toSafeFileName(title)}.png`;
 }
 
-function createCard(section, [title, url, imageTitle], index) {
-  const card = document.createElement("a");
-  card.className = "activity-card";
-  card.href = url;
-  card.target = "_blank";
-  card.rel = "noopener noreferrer";
-  card.dataset.title = title.toLocaleLowerCase("tr-TR");
-  card.setAttribute("aria-label", `${title} etkinliğini aç`);
+function pdfPath(folder, title) {
+  return `./${folder}/${toSafeFileName(title)}.pdf`;
+}
 
-  const imageWrap = document.createElement("div");
+function setNewTabLink(link, url, label) {
+  link.href = url;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  link.setAttribute("aria-label", label);
+}
+
+function createCard(section, [title, url, imageTitle], index) {
+  const card = document.createElement("article");
+  card.className = "activity-card";
+  card.dataset.title = title.toLocaleLowerCase("tr-TR");
+
+  const imageWrap = document.createElement("a");
   imageWrap.className = "card-image-wrap";
+  setNewTabLink(imageWrap, url, `${title} etkinliğini aç`);
 
   const image = document.createElement("img");
   image.className = "card-image";
@@ -108,11 +118,29 @@ function createCard(section, [title, url, imageTitle], index) {
   heading.className = "card-title";
   heading.textContent = title;
 
-  const action = document.createElement("div");
+  const actions = document.createElement("div");
+  actions.className = "card-actions";
+
+  const action = document.createElement("a");
   action.className = "card-action";
   action.innerHTML = '<span>Etkinliği aç</span><span aria-hidden="true">↗</span>';
+  setNewTabLink(action, url, `${title} etkinliğini aç`);
 
-  content.append(number, heading, action);
+  const pdfAction = document.createElement("a");
+  pdfAction.className = "pdf-action";
+  pdfAction.innerHTML = `
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M7 2h7l5 5v15H7z" />
+      <path d="M14 2v6h5" />
+      <path d="M9.5 16.5h5" />
+      <path d="M9.5 13.5h3" />
+    </svg>
+    <span>PDF Aç</span>
+  `;
+  setNewTabLink(pdfAction, pdfPath(section.pdfFolder, title), `${title} PDF dosyasını aç`);
+
+  actions.append(action, pdfAction);
+  content.append(number, heading, actions);
   card.append(imageWrap, content);
   return card;
 }

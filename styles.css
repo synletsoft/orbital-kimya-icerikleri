@@ -375,7 +375,7 @@ kbd {
 }
 
 .activity-card:hover,
-.activity-card:focus-visible {
+.activity-card:focus-within {
   border-color: rgba(17, 160, 154, 0.38);
   box-shadow: var(--shadow-hover);
   transform: translateY(-5px);
@@ -383,6 +383,7 @@ kbd {
 
 .card-image-wrap {
   position: relative;
+  display: block;
   aspect-ratio: 16 / 9;
   overflow: hidden;
   background: #eaf1f3;
@@ -454,12 +455,22 @@ kbd {
   -webkit-line-clamp: 3;
 }
 
-.card-action {
+.card-actions {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 9px;
   margin-top: auto;
   padding-top: 13px;
+}
+
+.card-action {
+  display: flex;
+  min-width: 0;
+  flex: 0 1 auto;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
   color: var(--teal-dark);
   font-size: 12px;
   font-weight: 800;
@@ -476,10 +487,45 @@ kbd {
   transition: transform 180ms ease, background 180ms ease;
 }
 
-.activity-card:hover .card-action span:last-child {
+.activity-card:hover .card-action span:last-child,
+.activity-card:focus-within .card-action span:last-child {
   color: #fff;
   background: var(--teal);
   transform: translateX(3px);
+}
+
+.pdf-action {
+  display: inline-flex;
+  height: 30px;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 5px;
+  padding: 0 9px;
+  color: #bd4d3b;
+  border: 1px solid rgba(244, 123, 98, 0.34);
+  border-radius: 999px;
+  background: #fff3ef;
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  transition: color 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.pdf-action:hover,
+.pdf-action:focus-visible {
+  color: #fff;
+  border-color: var(--coral);
+  background: var(--coral);
+}
+
+.pdf-action svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .empty-state {
