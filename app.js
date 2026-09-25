@@ -41,6 +41,15 @@ const sections = [
       ["Çözünme Süreci Maddelerin Çözünebilirliği", "https://synletsoft.github.io/cozunme-sureci-maddelerin-cozunebilirligi/"],
     ],
   },
+  {
+    grade: "11",
+    title: "11. Sınıf Kimya",
+    folder: "11-sinif-kimya",
+    items: [
+      ["Endotermik ve Ekzotermik Tepkimeler", "https://synletsoft.github.io/endotermik-ve-ekzotermik-tepkimeler/"],
+      ["Kimyasal Tepkimelerde Enerji", "https://synletsoft.github.io/kimyasal-tepkimelerde-enerji/"],
+    ],
+  },
 ];
 
 const sectionsRoot = document.querySelector("#sections");
@@ -126,20 +135,24 @@ function createCard(section, [title, url, imageTitle], index) {
   action.innerHTML = '<span>Etkinliği aç</span><span aria-hidden="true">↗</span>';
   setNewTabLink(action, url, `${title} etkinliğini aç`);
 
-  const pdfAction = document.createElement("a");
-  pdfAction.className = "pdf-action";
-  pdfAction.innerHTML = `
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M7 2h7l5 5v15H7z" />
-      <path d="M14 2v6h5" />
-      <path d="M9.5 16.5h5" />
-      <path d="M9.5 13.5h3" />
-    </svg>
-    <span>PDF Aç</span>
-  `;
-  setNewTabLink(pdfAction, pdfPath(section.pdfFolder, title), `${title} PDF dosyasını aç`);
+  actions.append(action);
 
-  actions.append(action, pdfAction);
+  if (section.pdfFolder) {
+    const pdfAction = document.createElement("a");
+    pdfAction.className = "pdf-action";
+    pdfAction.innerHTML = `
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M7 2h7l5 5v15H7z" />
+        <path d="M14 2v6h5" />
+        <path d="M9.5 16.5h5" />
+        <path d="M9.5 13.5h3" />
+      </svg>
+      <span>PDF Aç</span>
+    `;
+    setNewTabLink(pdfAction, pdfPath(section.pdfFolder, title), `${title} PDF dosyasını aç`);
+    actions.append(pdfAction);
+  }
+
   content.append(number, heading, actions);
   card.append(imageWrap, content);
   return card;
