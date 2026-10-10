@@ -173,11 +173,21 @@ h1 em {
 
 .orbit-one {
   transform: rotate(53deg);
+  animation: orbit-one-spin 12s linear infinite;
 }
 
 .orbit-two {
   transform: rotate(-53deg);
   border-color: rgba(244, 123, 98, 0.28);
+  animation: orbit-two-spin 10s linear infinite;
+}
+
+@keyframes orbit-one-spin {
+  to { transform: rotate(413deg); }
+}
+
+@keyframes orbit-two-spin {
+  to { transform: rotate(-413deg); }
 }
 
 .atom-core {
@@ -194,6 +204,11 @@ h1 em {
   box-shadow: 0 7px 18px rgba(17, 43, 70, 0.24);
   font-family: Georgia, serif;
   font-size: 18px;
+  animation: atom-pulse 2.8s ease-in-out infinite;
+}
+
+@keyframes atom-pulse {
+  50% { box-shadow: 0 0 0 9px rgba(17, 43, 70, .08), 0 7px 18px rgba(17, 43, 70, .24); }
 }
 
 .electron {
@@ -210,17 +225,27 @@ h1 em {
 .electron-one {
   top: 21px;
   left: 117px;
+  transform-origin: 9px 73px;
+  animation: electron-revolve 5s linear infinite;
 }
 
 .electron-two {
   right: 3px;
   bottom: 70px;
   background: var(--coral);
+  transform-origin: -109px -24px;
+  animation: electron-revolve 7s linear infinite reverse;
 }
 
 .electron-three {
   bottom: 22px;
   left: 72px;
+  transform-origin: 54px -72px;
+  animation: electron-revolve 6s linear infinite;
+}
+
+@keyframes electron-revolve {
+  to { transform: rotate(360deg); }
 }
 
 .toolbar {
@@ -700,6 +725,12 @@ kbd {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .orbit,
+  .electron,
+  .atom-core {
+    animation: none !important;
+  }
+
   *,
   *::before,
   *::after {
